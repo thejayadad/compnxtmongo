@@ -1,5 +1,5 @@
 import './globals.css'
-
+import AuthProvider from '@/SessionProvider'
 
 export const metadata = {
   title: 'Create Next App',
@@ -10,10 +10,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <div className='max-w-screen-lg	m-auto'>
+          <AuthProvider>
+          <div className='max-w-screen-lg	m-auto'>
         {children}
-
-        </div>        
+        </div>  
+          </AuthProvider>
         </body>
     </html>
   )
