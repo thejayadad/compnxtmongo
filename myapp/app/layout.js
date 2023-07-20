@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar'
 import './globals.css'
 import AuthProvider from '@/SessionProvider'
 
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
       <body>
           <AuthProvider>
           <div className='max-w-screen-lg	m-auto'>
+            <Navbar />
         {children}
         </div>  
           </AuthProvider>

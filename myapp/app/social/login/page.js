@@ -10,17 +10,20 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const router = useRouter()
+    const session = useSession();
+
+    
+  if (session.status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (session.status === "authenticated") {
+    router?.push("/");
+  }
 
 
-    useEffect(() => {
-        const setupProviders = async () => {
-          const response = await getProviders();
-          setProviders(response);
-        };
-        setupProviders();
-      }, []);
 
-    const handleSubmit = async (e) => {
+   const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (password === '' || email === '') {
@@ -57,6 +60,15 @@ const Login = () => {
                         Don&apos;t have an account? <br /> Register now.
                     </Link>
                 </form>
+                <div>
+                <button
+        onClick={() => {
+          signIn("google");
+        }}
+      >
+        Login with Google
+      </button>
+                </div>
               </div>
                 <ToastContainer />
     </section>
